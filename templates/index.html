@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos</title>
+    <style>
+        .done {
+        text-decoration:line-through;
+        color: red
+        }
+    </style>
+</head>
+<body>
+<div>
+   <!-- {{todos}} -->
+
+    <form method="POST" action="{{ '/add_todo' }}">
+    <label for="newTask">Add Task:</label>
+    <input type="text" id="newTask" name="newTask" required>
+    <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for todo in todos %}
+            <li class="yandex">
+                <a href="{{ '/done_todo?id='+todo[0]|string }}">✅</a>
+                <span class="{{ 'done' if todo[2] }}">{{ todo[1] }}</span>
+                <a href="{{ '/drop_todo?id='+todo[0]|string  }}">x</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+</body>
+</html>
