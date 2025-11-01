@@ -5,9 +5,6 @@ from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 data = Data()
 
-#todos = ["eat", "sleep", "repeat"]
-#todos = [{"id":0, "name": "eat", "done": False}]
-
 @app.route('/list')
 def index():
     todos = data.find_all()
